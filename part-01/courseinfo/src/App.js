@@ -1,14 +1,3 @@
-// Refactor the code so that it consists of three new components: 
-// Header, Content, and Total. 
-
-// All data still resides in the App component, which passes the necessary data to each component using props. 
-
-// Header takes care of rendering the name of the course, 
-// Content renders the parts and their number of exercises and 
-// Total renders the total number of exercises.
-
-
-
 const App = () => {
   const course = 'Half Stack application development';
   const part1 = 'Fundamentals of React';
@@ -30,6 +19,7 @@ const App = () => {
   );
 }
 
+// component
 const Header = (props) => {
   console.log(props)
   return (
@@ -39,29 +29,42 @@ const Header = (props) => {
   )
 }
 
-const Content = (props) => {
-  console.log(props)
+// new component
+const Part = (props) => {
   return (
     <div>
       <p>
-        In '{props.part1}' part there are {props.exercises1} exercises.
+        {props.part1} {props.exercises1}
       </p>
       <p>
-        In '{props.part2}' part there are {props.exercises2} exercises.
+        {props.part2} {props.exercises2}
       </p>
       <p>
-        In '{props.part3}' part there are {props.exercises3} exercises.
-      </p>
+        {props.part3} {props.exercises3}
+      </p>   
     </div>
   )
 }
 
+// component
+const Content = (props) => {
+  console.log(props)
+  return (
+    <div>
+      <Part part1={props.part1} exercises1={props.exercises1}/>
+      <Part part2={props.part2} exercises2={props.exercises2}/>
+      <Part part3={props.part3} exercises3={props.exercises3}/>  
+    </div>
+  )
+}
+
+// component
 const Total = (props) => {
   console.log(props)
   return (
     <div>
       <p>
-        The total number of exercises is {props.sum}.
+        Number of exercises {props.sum}
       </p>
     </div>
   )
